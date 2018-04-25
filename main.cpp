@@ -8,6 +8,7 @@ void request()
     QUrl url("https://api.twitter.com/1.1/search/tweets.json");
     QNetworkRequest request;
     QUrlQuery query;
+    query.addQueryItem("count", "1"); // Limit results
     query.addQueryItem("q", "#UbuconEU18");
     url.setQuery(query);
     request.setUrl(url);
