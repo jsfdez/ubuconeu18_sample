@@ -1,15 +1,16 @@
 #include <QtCore>
-#include <QtWidgets>
+#include <QtQuick>
 
-#include "model.h"
+#include "listmodel.h"
 
 int main(int argc, char **argv)
 {
-    QApplication app(argc, argv);
+    QGuiApplication app(argc, argv);
     qDebug() << "Application started";
-    QTableView view;
-    view.horizontalHeader()->setStretchLastSection(true);
-    view.setModel(new Model(&view));
+    qmlRegisterType<ListModel>("qt.labs.twittertimeline", 1, 0, "TwitterTimeLineModel");
+    QQuickView view;
+    view.setResizeMode(QQuickView::SizeRootObjectToView);
+    view.setSource(QUrl::fromLocalFile(":/main.qml"));
     view.show();
     return app.exec();
 }

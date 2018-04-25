@@ -34,7 +34,6 @@ int Model::columnCount(const QModelIndex &) const
 
 QVariant Model::data(const QModelIndex &index, int role) const
 {
-    qDebug() << index << role;
     if (index.isValid() && role == Qt::DisplayRole) {
         switch (index.column()) {
         case User: return std::get<User>(tweets[std::size_t(index.row())]);

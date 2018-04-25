@@ -2,7 +2,7 @@ TEMPLATE = app
 
 QT += \
     core \
-    widgets \
+    quick \
     network
 
 CONFIG += c++14
@@ -13,7 +13,11 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     main.cpp \
-    model.cpp
+    model.cpp \
+    listmodel.cpp
 
 HEADERS += \
-    model.h
+    model.h \
+    listmodel.h
+
+RESOURCES += res.qrc
