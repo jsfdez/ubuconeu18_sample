@@ -5,8 +5,11 @@ static QNetworkAccessManager networkAccessManager;
 
 void request()
 {
-    const QUrl url("https://api.twitter.com/1.1/search/tweets.json");
+    QUrl url("https://api.twitter.com/1.1/search/tweets.json");
     QNetworkRequest request;
+    QUrlQuery query;
+    query.addQueryItem("q", "#UbuconEU18");
+    url.setQuery(query);
     request.setUrl(url);
 
     const auto authorizationString = QString("Bearer %1").arg(qgetenv("BEARER").data());
