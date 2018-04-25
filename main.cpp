@@ -8,6 +8,10 @@ void request()
     const QUrl url("https://api.twitter.com/1.1/search/tweets.json");
     QNetworkRequest request;
     request.setUrl(url);
+
+    const auto authorizationString = QString("Bearer %1").arg(qgetenv("BEARER").data());
+    request.setRawHeader(QByteArrayLiteral("Authorization"), authorizationString.toUtf8());
+
     auto reply = networkAccessManager.get(request);
     QObject::connect(reply, &QNetworkReply::finished, [reply]() {
         qDebug() << reply->readAll();
